@@ -10,7 +10,7 @@ const login = async (req, res) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                error: "User Not Found !"
+                error: "Check your e-mail !"
             });
         }
 
@@ -19,17 +19,19 @@ const login = async (req, res) => {
         if (!passwordIsMatch) {
             return res.status(400).json({
                 success: false,
-                error: "Invalid credentials, password does not match."
+                error: "password not match !"
             });
         }
 
         // Generate JWT token if password matches
-        const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_KEY, { expiresIn: "10d" });
+        const token = jwt.sign({ _id: user._id, role: user.role },
+            process.env.JWT_KEY, { expiresIn: "10d" });
 
         res.status(200).json({
             success: true,
             message: "Successfully logged in",
             token,
+            // store user crediental
             user: {
                 _id: user._id,
                 name: user.name,
@@ -44,5 +46,7 @@ const login = async (req, res) => {
         });
     }
 };
-
-export { login };
+const verify=(req,res)=>{
+    return res.status(200).json({success:true,user:req.user})
+}
+export { login ,verify};

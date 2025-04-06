@@ -1,9 +1,20 @@
+
 import React from 'react';
+import { useAuth } from '../Context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
+    const {user,loading}=useAuth();
+    const navigate=useNavigate();
+    if(loading){
+        return <div> Loading ...</div>
+    }
+    if(!user){
+        navigate('/login')
+    }
     return (
         <div>
-            <div>AdminDashboard Page ...</div>
+           AdminDashboard{user && user.name} 
         </div>
     );
 }
