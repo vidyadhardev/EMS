@@ -2,6 +2,7 @@
 import React from 'react';
 import { useAuth } from '../Context/authContext';
 import { useNavigate } from 'react-router-dom';
+import AdminSidebar from '../components/dashboard/AdminSidebar';
 
 const AdminDashboard = () => {
     const {user,loading}=useAuth();
@@ -14,7 +15,8 @@ const AdminDashboard = () => {
     }
     return (
         <div>
-           AdminDashboard{user && user.name} 
+            Now You Navigate On <b>{user && user.name}</b>  dashboard 
+            <AdminSidebar/>
         </div>
     );
 }

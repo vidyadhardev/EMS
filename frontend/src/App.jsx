@@ -4,18 +4,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminDashboard from "./pages/AdminDashboard";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import Login from "./pages/Login";
+import PrivateRoutes from "./utils/PrivateRoutes";
+import RoleBaseRoutes from "./utils/RoleBaseRoutes";
 
 const App = () => {
   return (
     <>
-      {/* <div className="">
-        <div className='text-2xl font-serif text-purple-600'>Welcome To The Employee System Management ! </div>
-      </div> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/admin-dashboard" />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          {/* protect admin routes from PrivateRoutes & RoleBaseRoutes used */}
+          <Route path="/admin-dashboard" element={
+            <PrivateRoutes>
+              <RoleBaseRoutes requierdRole={["admin"]}>
+                <AdminDashboard />
+              </RoleBaseRoutes>
+            </PrivateRoutes>
+          } />
           <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
         </Routes>
       </BrowserRouter>

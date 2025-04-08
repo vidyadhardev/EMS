@@ -14,7 +14,7 @@ const Login = () => {
 
             const response = await axios.post("http://localhost:5000/api/auth/login",
                 { email, password });
-            console.log(response);
+            // console.log(response);
             if (response.data.success) {
                 // alert(response.data.message);
                 login(response.data.user)
@@ -44,12 +44,12 @@ const Login = () => {
         <div className='flex flex-col items-center h-screen justify-center 
         bg-gradient-to-b from-indigo-200 from-50% to-indigo-100 to-50% space-y-6'>
             <h2 className=' font-Ga+Maaml text-3xl text-white'>Employee Managment System</h2>
-            {error &&<p className='text-red-500 mb-4'>{error}</p>}
+            
             <div className='border shadow p-6 w-96 bg-white rounded-md border-l-rose-900'>
                 <h2 className=' text-2xl font-bold mb-4'>
                     Login User ..
                 </h2>
-
+                {error && <p className='text-red-500 mb-4'>{error} vgfg</p>}
                 <form onSubmit={handleSubmit}>
                     <div className=' mb-4'>
                         <label htmlFor='email'

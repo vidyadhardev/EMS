@@ -25,7 +25,7 @@ const login = async (req, res) => {
 
         // Generate JWT token if password matches
         const token = jwt.sign({ _id: user._id, role: user.role },
-            process.env.JWT_KEY, { expiresIn: "10d" });
+            process.env.JWT_KEY, { expiresIn: "1d" });
 
         res.status(200).json({
             success: true,
