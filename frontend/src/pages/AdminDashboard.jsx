@@ -1,22 +1,31 @@
 
 import React from 'react';
 import { useAuth } from '../Context/authContext';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import AdminSidebar from '../components/dashboard/AdminSidebar';
+import Navbar from '../components/dashboard/NavBar';
+import AdminSummary from '../components/dashboard/AdminSummary';
+import { Outlet } from 'react-router-dom';
 
 const AdminDashboard = () => {
-    const {user,loading}=useAuth();
-    const navigate=useNavigate();
-    if(loading){
-        return <div> Loading ...</div>
-    }
-    if(!user){
-        navigate('/login')
-    }
+    const { user } = useAuth();
+
+    // const {user,loading}=useAuth();
+    // const navigate=useNavigate();
+    // if(loading){
+    //     return <div> Loading ...</div>
+    // }
+    // if(!user){
+    //     navigate('/login')
+    // }
     return (
-        <div>
-            Now You Navigate On <b>{user && user.name}</b>  dashboard 
-            <AdminSidebar/>
+        <div className='flex'>
+            <AdminSidebar />
+            <div className='flex-1 ml-64 bg-gray-100 h-screen'>
+                <Navbar />
+                {/* <AdminSummary /> */}
+                <Outlet/>
+            </div>
         </div>
     );
 }
