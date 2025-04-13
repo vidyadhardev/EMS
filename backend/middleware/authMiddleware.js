@@ -18,8 +18,12 @@ const verifyUsers = async (req, res, next) => {
         }
         req.user = user
         next();
-    } catch (error) { 
-        return res.status(500).json({ success: false, error: "Server Error !" })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: "Internal Server Error. Please try again later."
+        });
+
 
     }
 };

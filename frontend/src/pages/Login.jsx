@@ -43,7 +43,7 @@ const Login = () => {
 
         <div className='flex flex-col items-center h-screen justify-center 
         bg-gradient-to-b from-indigo-200 from-50% to-indigo-100 to-50% space-y-6'>
-            <h2 className=' font-Ga+Maaml text-3xl text-white'>Employee Managment System</h2>
+            <h2 className=' font-Ga+Maaml text-3xl '>Employee Managment System</h2>
             
             <div className='border shadow p-6 w-96 bg-white rounded-md border-l-rose-900'>
                 <h2 className=' text-2xl font-bold mb-4'>
